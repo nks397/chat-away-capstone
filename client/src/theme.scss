@@ -1,0 +1,11 @@
+:root {
+    --background: #fff;
+    --color: #000;
+    --navBackground: blue;
+}
+
+// [data-theme-color="black"]
+
+[data-theme-background="light"] {--background: #fff; --color: #000; --navBackground: blue;}  
+[data-theme-background="dim"] {--background:rgb(42 40 40); --color: rgb(238, 230, 230); --navBackground: rgb(1, 1, 80);}
+[data-theme-background="dark"] {--background: rgba(10, 10, 10, 0.993); --color: rgb(231, 221, 221); --navBackground: black;}
