@@ -6,13 +6,16 @@ import SettingsProvider from "./context/SettingsProvider"
 import "./styles.scss"
 import "./index.scss"
 import App from "./App"
+import MembersProvider from "./context/MembersProvider"
 
 ReactDOM.render(
   <BrowserRouter>
     <UserProvider>
-      <SettingsProvider>
-          <App />
-      </SettingsProvider>
+      <MembersProvider>
+          <SettingsProvider>
+              <App />
+          </SettingsProvider>
+      </MembersProvider>
     </UserProvider>
   </BrowserRouter>,
   document.getElementById("root")

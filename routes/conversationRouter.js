@@ -42,8 +42,12 @@ conversationRouter.get("/:firstUserId/:secondUserId", (req, res, next) => {
 conversationRouter.post("/postConvo", (req, res, next) => {
     // save conversation
     
-        const newConversation = new Conversation(req.body)
-        
+        // const newConversation = new Conversation(req.body)
+        const newConversation = new Conversation({
+            membersArr: [ req.body.senderId, req.body.recipientId]   
+        })
+
+        // members: [req.body.senderId, req.body.receiverId],
         newConversation.save((err, savedConversation) => {
             if(err) {
                 res.status(500)

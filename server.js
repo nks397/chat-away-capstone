@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 7000
 //   })
 //   console.log("We have a new connection!!!!")
 
-//   // socket.on("disconnect", )
+//   // socket.on("disconnect", () => console.log("disconnected"))
 // })
 
 const expressJwt = require("express-jwt")

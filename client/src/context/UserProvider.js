@@ -139,6 +139,13 @@ export default function UserProvider(props) {
         .catch(err => console.log(err.response.data.errMsg))
     }
 
+    // function createConversation(recipients) {
+    //     setConversations(prevConversations => {
+    //       return [...prevConversations, { recipients, messages: [] }]
+    //     })
+    //   }
+    
+
     // conversation
 
     // new conversation

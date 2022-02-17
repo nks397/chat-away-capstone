@@ -1,12 +1,12 @@
-import React from "react"
+// import React from "react"
 
-function StartChat() {
-    return(
-        <div>
-            Click on a member and start chatting!
+// function StartChat() {
+//     return(
+//         <div>
+//             Click on a member and start chatting!
 
-        </div>
-    )
-}
+//         </div>
+//     )
+// }
 
-export default StartChat
+// export default StartChat

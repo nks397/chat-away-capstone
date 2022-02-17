@@ -5,7 +5,6 @@ import ContactSidebar from "./ContactSidebar"
 // import Conversations from "./Conversations"
 import ProfileSidebar from "./ProfileSidebar"
 import Messenger from "./Messenger"
-import StartChat from "./StartChat"
 
 function Home() {
     const {logout, user, getAllUsers, members, postMessages, getMessages, newConversation, messages} = useContext(UserContext)
@@ -20,8 +19,8 @@ function Home() {
             
             {/* conversation in the middle of the screen */}
             {/* <Conversations postMessages={postMessages} newConversation={newConversation} messages={messages} user={user} /> */}
-            <Messenger members={members}/>
-            {/* <StartChat /> */}
+            <Messenger/>
+          
             {/* messenger component is where I can dynamically send down data/conversation based on each members */}
             {/* profile sidebar to the right of the screen */}
             <ProfileSidebar logout={logout} user={user} />

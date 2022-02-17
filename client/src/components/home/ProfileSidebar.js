@@ -18,12 +18,12 @@ function ProfileSidebar(props) {
         } = props
     // const {username, memberSince} = user
     const {background} = useContext(SettingsContext)
-    const {image, onImageChange} = useContext(SettingsContext)
+    const {image, imageUrl, onImageChange} = useContext(SettingsContext)
 
     return(
         <div className="profile-sidebar-container">
             <h2 data-theme-background={background} className="color">My Profile</h2>
-            <img src={image} alt="preview image" className="avatar"/>
+            <img src={imageUrl} alt="preview image" className="avatar"/>
             {/* <Avatar style={{backgroundColor: "green"}} size={64} icon={<UserOutlined />} /> */}
             <h3 data-theme-background={background} className="color">Username: @{username}</h3>
             <h3 data-theme-background={background} className="color">Member Since: {memberSince}</h3>
