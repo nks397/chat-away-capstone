@@ -14,9 +14,13 @@ export default function MembersProvider(props) {
     const [convoId, setConvoId] = useState("no id grabbed")
     
     // const {members} = props
-    const {user, members, newConversation, conversations, getTwoUsersConversation} = useContext(UserContext)
+    const {user, members, getAllUsers, newConversation, conversations, getTwoUsersConversation} = useContext(UserContext)
     // console.log(user, "from search mem")
     console.log(members, "mem")
+
+    useEffect(() => {
+        getAllUsers()
+    }, [])
 
     const filteredMembers = members.filter(member => {
         if(searchInput.searchTerm === "") {
@@ -28,12 +32,12 @@ export default function MembersProvider(props) {
             return member.username
         }
     })
-    .map(member => member._id !== user._id ?
+    .map(member => member._id !== user._id ? 
         <>
             {/* <Avatar style={{backgroundColor: "green"}} size="default" icon={<UserOutlined />} /> */}
         
 
-                <p onClick={() => {
+                 <p onClick={() => {
                     return member._id !== user._id ? setMemberId(member._id) : null,
                     newConversation({senderId: user._id, recipientId: member._id}),
                     // im creating a newConvo first, on second click the id is grabbed

@@ -38,7 +38,6 @@ export default function UserProvider(props) {
 
     // signup, login, logout
     function signUp(credentials) {
-        // the signup in the backend is a post request
         axios.post("/auth/signup", credentials)
         .then(res => {
             // console.log(res, "res")
@@ -71,12 +70,14 @@ export default function UserProvider(props) {
         // reset local storage
         localStorage.removeItem("user")
         localStorage.removeItem("token")
+        localStorage.removeItem("imageUrl")
 
         // reset state
         setUserState({
             user: {},
             token: "",
             messages: []
+
         })
     } 
     
@@ -139,6 +140,33 @@ export default function UserProvider(props) {
         .catch(err => console.log(err.response.data.errMsg))
     }
 
+    // create update user profile function
+    // change profile picture axios put request
+    // store picUrl in profilePic property
+    function updateProfilePic(profilePic, userId) {
+        userAxios.put(`/api/users/profilePicture/${userId}`, profilePic)
+        .then(res => {
+            const {user} = userState
+            localStorage.setItem("user", JSON.stringify(user))
+            localStorage.getItem("user")
+            console.log(user, "user from userstate")
+            setUserState(prevState => ({
+                ...prevState, 
+                user: {...prevState.user, profilePic}
+            }))
+            console.log(profilePic, "update user object")
+            // console.log(res.data, "ress")
+        })
+        .catch(err => console.log(err.response.data.errMsg))
+    }
+    // call function in handleFileClick function
+
+    //update user's theme
+    function updateUserTheme(updatedTheme, userId) {
+        userAxios.put(`/api/users/updateUserTheme/${userId}`, updatedTheme)
+        .then(res => console.log(res.data))
+    }
+
     // function createConversation(recipients) {
     //     setConversations(prevConversations => {
     //       return [...prevConversations, { recipients, messages: [] }]
@@ -197,6 +225,8 @@ export default function UserProvider(props) {
                 getTwoUsersConversation,
                 postMessages,
                 getAllUsers,
+                updateProfilePic,
+                updateUserTheme,
                 signUp,
                 login,
                 logout,

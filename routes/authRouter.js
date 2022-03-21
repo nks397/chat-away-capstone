@@ -1,9 +1,13 @@
 const express = require("express")
 const authRouter = express.Router()
 const User = require("../models/User")
+const cloudinary = require("../utils/cloudinary");
+const upload = require("../utils/multer");
 const jwt = require("jsonwebtoken")
 
-authRouter.post("/signup", (req, res, next) => {
+
+authRouter.post("/signup", upload.single("image"), async (req, res, next) => {
+  const result = await cloudinary.uploader.upload(req.file.path);
     User.findOne({username: req.body.username.toLowerCase()}, (err, user) => {
         if(err){
             res.status(500) 
@@ -14,9 +18,17 @@ authRouter.post("/signup", (req, res, next) => {
             res.status(403)
             return next(new Error("That username is already taken."))
         }
-        
+
+        console.log(result.secure_url, "url result")
+        console.log(result, "result")
         // if user doesn't exist, then save user
-        const newUser = new User(req.body)
+        const newUser = new User({
+          username: req.body.username,
+          password: req.body.password,
+          profilePic: result.secure_url,
+          // theme: req.body.theme
+          // cloudinaryId: result.public_id
+        })
         newUser.save((err, savedUser) => {
             if(err) {
                 res.status(500)
@@ -25,9 +37,10 @@ authRouter.post("/signup", (req, res, next) => {
             // payload, secret
             // savedUser.toObject is in the form of an object.
         
+            // const token = jwt.sign(savedUser.withoutPassword(), process.env.SECRET)
+            // return res.status(201).send({token, user: savedUser.withoutPassword(), membersInArr})
             const token = jwt.sign(savedUser.withoutPassword(), process.env.SECRET)
-            return res.status(201).send({token, user: savedUser.withoutPassword(), membersInArr})
-
+            return res.status(201).send({token, user: savedUser.withoutPassword()})
             // const token = jwt.sign(savedUser.toObject(), process.env.SECRET)
             // return res.status(201).send({token, user: savedUser})
         })

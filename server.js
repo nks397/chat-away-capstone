@@ -4,6 +4,34 @@ require("dotenv").config()
 const mongoose = require("mongoose")
 const morgan = require("morgan")
 
+
+// const multer = require("multer");
+// const cloudinary = require("cloudinary").v2;
+// const { CloudinaryStorage } = require('multer-storage-cloudinary');
+
+// cloudinary.config({
+// cloud_name: process.env.CLOUD_NAME,
+// api_key: process.env.API_KEY,
+// api_secret: process.env.API_SECRET
+// });
+
+// const storage = new CloudinaryStorage({
+//   cloudinary: cloudinary,
+//   params: {
+//     folder: "profile-pictures",
+//     // allowedFormats: ["jpg", "png", "jpeg"],
+//     // format: async (req, file) => 'png', // supports promises as well
+//     // public_id: (req, file) => 'computed-filename-using-request',
+//   },
+// });
+// // User.create({profilePic: cloudinary})
+
+// const upload = multer({ storage: storage});
+// // send url to profile pic property in user model
+// app.post('/api/images', upload.single("image"), async (req, res) => {
+//   return res.json({ profilePic: req.file.path });
+// });
+
 // const http = require("http")
 // const socketio = require("socket.io")
 
@@ -55,6 +83,7 @@ app.use((err, req, res, next) => {
   }
   return res.send({errMsg: err.message})
 })
+
 
 // socket
 // const io = require("socket.io")(7000)

@@ -9,7 +9,8 @@ import Messenger from "./Messenger"
 function Home() {
     const {logout, user, getAllUsers, members, postMessages, getMessages, newConversation, messages} = useContext(UserContext)
     const {background} = useContext(SettingsContext)
-
+    // console.log(user, "userObj")
+    
     return(
         <div data-theme-background={background} className="home-page background color">
             {/* Home Page */}
