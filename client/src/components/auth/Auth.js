@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import { UserContext } from "../../context/UserProvider"
 import AuthForm from "./AuthForm"
 // inputs for user credentials
@@ -16,6 +16,7 @@ function Auth() {
     const [toggle, setToggle] = useState(false)
 
     const {signUp, login, errMsg, resetAuthErr} = useContext(UserContext)
+
 
     function handleChange(e) {
         // console.log(e.target)
@@ -47,7 +48,7 @@ function Auth() {
         setToggle(prevToggle => !prevToggle)
         resetAuthErr()
     }
-    
+
     return (
         <div className="auth-container">
             <h1> Welcome to Chat Away!</h1>

@@ -9,7 +9,7 @@ import ChatDetails from "./StartChat"
 
 function Chat() {
     const {user, members, conversations, logout, getAllUsers} = useContext(UserContext)
-    const {background} = useContext(SettingsContext)
+    const {background, themeRef} = useContext(SettingsContext)
     // const [convoId, setConvoId] = useState("")
     console.log(members, "hehy")
 
@@ -25,7 +25,7 @@ function Chat() {
 
     console.log(mapUsername, "mapping")
     return(
-        <div data-theme-background={background} className="home-page background color">
+        <div data-theme-background={themeRef.current} className="home-page background color">
         <ContactSidebar getAllUsers={getAllUsers}  members={members} />
         {/* {member.username} */}
         <Messenger members={members}/>

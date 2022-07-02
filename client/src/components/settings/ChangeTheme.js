@@ -1,17 +1,26 @@
-import React, {useContext} from "react"
+import React, {useContext, useEffect} from "react"
 import {SettingsContext} from "../../context/SettingsProvider"
+import { UserContext } from "../../context/UserProvider";
 import { Card } from 'antd';
 import BackgroundInput from "./BackgroundInput"
 
 
 function ChangeTheme() {
-    const { background, onChange } = useContext(SettingsContext)
+    const { onChange, themeRef } = useContext(SettingsContext)
+    // const {updateUserTheme, user} = useContext(UserContext)
+
+console.log(themeRef, "theme ref")
+// console.log(background, "back")
+
+
 
     return(
         <div className="change-theme-container">
             
             <h1 className="change-theme-title">Theme Changer</h1>
-            <p data-theme-background={background} className="change-theme-description background color">Select your theme.</p>
+            <p data-theme-background={themeRef.current} className="change-theme-description background color">Select your theme.</p>
+            {/* <p data-theme-background={themeObject} className="change-theme-description background color">Select your theme.</p> */}
+            
             <div>
                 <form className="cards-container" onChange={onChange}>
                     <Card title="Light Mode" className="change-theme-card">

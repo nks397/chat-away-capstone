@@ -16,8 +16,20 @@ const Message = require("../models/Message")
 //     })
 // })
 
-messageRouter.get("/getMsg/:conversationId", (req, res, next) => {
-    Message.find({conversationId: req.params.conversationId}, (err, messages) => {
+// messageRouter.get("/getMsg/:conversationId", (req, res, next) => {
+//     Message.find({conversationId: req.params.conversationId}, (err, messages) => {
+//         // console.log(req.user, "req")
+//         if(err) {
+//             res.status(500)
+//             return next(err)
+//         }
+//         return res.status(200).send(messages)
+//     })
+// })
+// edit this get request so I can get all the messages between the sender and recipient
+// check video to see how messages are created/set up/what are being grabbed to create or get messages
+messageRouter.get("/getMsg/:sender/:recipient", (req, res, next) => {
+    Message.find({sender: req.params.sender, recipient: req.params.recipient}, (err, messages) => {
         // console.log(req.user, "req")
         if(err) {
             res.status(500)
@@ -32,7 +44,6 @@ messageRouter.post("/addMsg", (req, res, next) => {
     // req.body.username = req.user.username
     // req.body.timestamps = req.user.timestamps
     // req.body.username = req.user.username
-    
     const newMessage = new Message(req.body)
     newMessage.save((err, savedMessage) => {
         if(err) {
@@ -50,7 +61,19 @@ messageRouter.delete("/:messageId/deleteMsg", (req, res, next) => {
             res.status(500)
             return next
         }
-        return res.status(200).send(`Successfully deleted '${deletedMessage.userMsg}' from the database`)
+        return res.status(200).send(`Successfully deleted '${deletedMessage.text}' from the database`)
+    })
+})
+
+// deleteMultipleMessages
+messageRouter.delete("/:messageId/deleteManyMsg", (req, res, next) => {
+    Message.deleteMany({_id: {$in: [req.params.messageId]}}, (err, deletedMessage) => {
+        if(err) {
+            res.status(500)
+            return next
+        }
+        console.log(deletedMessage, "delMsg")
+        return res.status(200).send(`Successfully deleted '${deletedMessage.deletedCount}' message from the database`)
     })
 })
 

@@ -1,17 +1,12 @@
-// import React from "react"
-// import { Avatar } from "antd"
-// import { UserOutlined } from '@ant-design/icons'
+import React from "react"
 
-// function Members(props) {
-//     const {username} = props
-    
-//     return(
-//         <div>
-//             <Avatar style={{backgroundColor: "green"}} size="default" icon={<UserOutlined />} />
-//             {username}
-//             {/* {console.log(members, "username")} */}
-//         </div>
-//     )
-// }
+function Members({filteredMembers}) {
+  
+      return (
+        <div> 
+            {filteredMembers}
+        </div>
+    )
+}
 
-// export default Members
+export default Members

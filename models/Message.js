@@ -2,7 +2,10 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 // may only be the user and the message
 const messageSchema = new Schema({
-    conversationId: {
+    // conversationId: {
+    //     type: String
+    // },
+    recipient: {
         type: String
     },
     sender: {

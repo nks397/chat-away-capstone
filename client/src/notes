@@ -8,3 +8,6 @@ authform
 (done)-make err msg visible
 
 makes inputs reusable
+
+-new problem
+state isn't changing for profile pic

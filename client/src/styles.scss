@@ -22,6 +22,13 @@
               box-shadow: 0 8px 6px -6px black;
 }
 
+.logo {
+  font-size: 25px;
+  // font-family: 'Faster One', cursive;
+  font-weight: bolder;
+  font-family: 'Rampart One', cursive;
+}
+
 .auth-container {
     display: flex;
     align-items: center;
@@ -191,9 +198,30 @@
 }
 
 .members{
-  text-align: center;
+  // text-align: center;
+  padding-left: 5px;
   padding-top: 40px;
   font-family: 'Manjari', sans-serif;
+}
+
+.member-name {
+  text-align: center;
+  font-size: 3vh;
+  font-weight: bold;
+  background-color: rgb(212, 209, 209);
+}
+
+.members-avatar {
+  vertical-align: middle;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  border-color: gray;
+  border-style: outset;
+}
+
+.members-avatar:hover, .members-name:hover {
+  cursor: pointer;
 }
 
 
@@ -204,7 +232,7 @@
     text-align: center;
     border-left: 2px solid rgba(175, 173, 173, 0.671);
     height: 100vh;
-    padding-top: 10px;
+    padding-top: 10%;
 
 }
 
@@ -324,8 +352,10 @@
 // change avatar
 .avatar {
   vertical-align: middle;
-  width: 80px;
-  height: 80px;
+  // width: 80px;
+  // height: 80px;
+  width: 15vh;
+  height: 15vh;
   border-radius: 50%;
   border-color: gray;
   border-style: outset;
@@ -339,6 +369,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.profile-title {
+  font-size: 4vh;
+  font-family: 'Bebas Neue', cursive;
+  
+}
+
+.profile-info,.members-name {
+  font-size: 2.5vh;
+  font-family: 'Source Sans Pro', sans-serif;
+  
+}
+
+.profile-username {
+  padding-top: 6%;
+}
+
+.logout-btn {
+  color: black;
 }
 
 .image-wrapper {
@@ -372,6 +422,12 @@
 }
 
 // messages
+.start-chat {
+  font-size: 7vh;
+  text-align: center;
+  padding-top: 50%;
+}
+
 .message {
   display: flex;
   flex-direction: column;
@@ -396,7 +452,11 @@
     background-color: #1877f2;
     color: white;
     max-width: 300px;
+    font-size: 18px;
 }
+
+// testing css
+
 
 .messageBottom{
     font-size: 12px;
@@ -405,7 +465,17 @@
 
 .message.own{
     align-items: flex-end;
+    // text-align: right;
+
 }
+
+// .me {
+//   color: grey;
+// }
+
+// .friend {
+//   color: yellow;
+// }
 
 .message.own .messageText{
     background-color: rgb(245, 241, 241);

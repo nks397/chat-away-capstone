@@ -5,11 +5,12 @@ const cloudinary = require("../utils/cloudinary");
 const upload = require("../utils/multer");
 const jwt = require("jsonwebtoken")
 
-
-authRouter.post("/signup", upload.single("image"), async (req, res, next) => {
-  const result = await cloudinary.uploader.upload(req.file.path);
-    User.findOne({username: req.body.username.toLowerCase()}, (err, user) => {
-        if(err){
+// upload.single("image")
+authRouter.post("/signup", (req, res, next) => {
+  // const result = await cloudinary.uploader.upload(req.file.path)
+  // console.log(req, "filePath") 
+  User.findOne({username: req.body.username.toLowerCase()}, (err, user) => {
+    if(err){
             res.status(500) 
             return next(err)
         }
@@ -19,13 +20,18 @@ authRouter.post("/signup", upload.single("image"), async (req, res, next) => {
             return next(new Error("That username is already taken."))
         }
 
-        console.log(result.secure_url, "url result")
-        console.log(result, "result")
+
+        // console.log(result.secure_url, "url result")
+        // console.log(result, "result")
+        console.log(req.body.profilePic, "bod")
         // if user doesn't exist, then save user
+        // const newUser = new User(req.body)
         const newUser = new User({
           username: req.body.username,
           password: req.body.password,
-          profilePic: result.secure_url,
+          // profilePic: result.secure_url,
+          profilePic: req.body.profilePic
+
           // theme: req.body.theme
           // cloudinaryId: result.public_id
         })

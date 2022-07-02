@@ -3,17 +3,19 @@ import { format } from "timeago.js";
 import { MembersContext } from "../../context/MembersProvider";
 import { UserContext } from "../../context/UserProvider";
 
-export default function Messages({ message, senderMessage }) {
-  // const {memberId} = useContext(MembersContext)
-  // // do this in messenger.js
-  // // const convoMemberId = conversation.map(convo => convo.memberArr[1])
+export default function Messages({ message, senderMessage, msg, user1 }) {
+const date = msg.createdAt.toDate().toLocaleDateString()
+const time = msg.createdAt.toDate().toLocaleTimeString('en-US')
+
   return (
-    <div className={senderMessage ? "message own" : "message"}>
-      
-      <div className="messageTop">
-        <p className="messageText">{message.text}</p>
-      </div>
-      <div className="messageBottom">{format(message.createdAt)}</div>
+      <div className={msg.sender === user1? "message own" : "message"}>
+        <div className="messageTop">
+          <p className="messageText"> {msg.text} </p>
+       </div>
+        {/* )} */}
+      <div className="messageBottom"> {`${date} ${time}`}</div>
+      {/* <div className="messageBottom">{msgs.map(msg => msg.createdAt)}</div> */}
+
     </div>
   );
 }

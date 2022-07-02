@@ -15,12 +15,12 @@ const userSchema = new Schema({
     },
     profilePic: {
         type: String,
-        // default: "https://t4.ftcdn.net/jpg/03/32/59/65/240_F_332596535_lAdLhf6KzbW6PWXBWeIFTovTii1drkbT.jpg"
+        default: "https://t4.ftcdn.net/jpg/03/32/59/65/240_F_332596535_lAdLhf6KzbW6PWXBWeIFTovTii1drkbT.jpg"
     },
-    cloudinaryId: {
-      type: String,
-      default: "kf8bqmekdx441ziszgbr",
-    },
+    // cloudinaryId: {
+    //   type: String,
+    //   default: "kf8bqmekdx441ziszgbr",
+    // },
     theme: {
       type: String,
       default: "light"
