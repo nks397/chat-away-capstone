@@ -1,46 +1,30 @@
 import React, { useState, useContext, useEffect } from "react"
+import { MembersContext } from "../../context/MembersProvider"
 import { UserContext } from "../../context/UserProvider"
 import AuthForm from "./AuthForm"
-// inputs for user credentials
-
-const initInputs = {
-    username: "",
-    password: "",
-    // profilePic: ""
-}
 
 function Auth() {
-    // state, handleChange, handleSignUp, handleLogin, toggleForm
-
-    const [inputs, setInputs] = useState(initInputs)
     const [toggle, setToggle] = useState(false)
-
     const {signUp, login, errMsg, resetAuthErr} = useContext(UserContext)
+    const {inputs, handleChange} = useContext(MembersContext)
 
-
-    function handleChange(e) {
-        // console.log(e.target)
-        // to grab the user inputs, target the name and value of the inputs
-        // e.target
-        // setInputs
-        const {name, value} = e.target
-        setInputs(prevInputs => ({
-            ...prevInputs,
-            // don't know what this is doing
-            [name]: value
-        }))
+    const credentials = {
+        username: inputs.username,
+        password: inputs.password
     }
-
+    
     // signUp
     function handleSignUp(e) {
         e.preventDefault()
-        signUp(inputs)
+        // signUp(inputs)
+        signUp(credentials)
+
     }
 
     // login
     function handleLogin(e) {
         e.preventDefault()
-        login(inputs)
+        login(credentials)
     }
 
     // toggle in between signUp and login forms
@@ -68,14 +52,12 @@ function Auth() {
                     <AuthForm 
                         handleChange={handleChange}
                         handleSubmit={handleLogin}
-                        inputs={inputs}
+                        inputs={credentials}
                         btnText="Login"
                         errMsg={errMsg}
                     />
                     <p className="authMsg" onClick={toggleForm}>Not a member?</p>
                 </>
-                
-
             }
         </div>
     )

@@ -1,35 +1,24 @@
-import React, {useContext, useEffect} from "react"
+import React, {useContext} from "react"
 import {SettingsContext} from "../../context/SettingsProvider"
-import { UserContext } from "../../context/UserProvider";
 import { Card } from 'antd';
 import BackgroundInput from "./BackgroundInput"
 
 
 function ChangeTheme() {
-    const { onChange, themeRef } = useContext(SettingsContext)
-    // const {updateUserTheme, user} = useContext(UserContext)
-
-console.log(themeRef, "theme ref")
-// console.log(background, "back")
-
-
+    const { onThemeChange, themeRef } = useContext(SettingsContext)
 
     return(
         <div className="change-theme-container">
-            
             <h1 className="change-theme-title">Theme Changer</h1>
             <p data-theme-background={themeRef.current} className="change-theme-description background color">Select your theme.</p>
-            {/* <p data-theme-background={themeObject} className="change-theme-description background color">Select your theme.</p> */}
-            
             <div>
-                <form className="cards-container" onChange={onChange}>
+                <form className="cards-container" onChange={onThemeChange}>
                     <Card title="Light Mode" className="change-theme-card">
                         <div>
                             <img src="https://images.unsplash.com/photo-1525490829609-d166ddb58678?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzg4fHx3aGl0ZSUyMGNsb3Vkc3xlbnwwfDB8MHx8&auto=format&fit=crop&w=500&q=60" style={{width: "210px"}} />
                         </div>
                         <BackgroundInput 
                             value="light"
-                            // defaultChecked
                         />
                     </Card>
                     <Card title="Dim Mode" className="change-theme-card">

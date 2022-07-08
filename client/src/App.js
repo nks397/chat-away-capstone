@@ -10,10 +10,6 @@ import ChangeTheme from "./components/settings/ChangeTheme"
 import About from "./components/settings/About"
 import Contact from "./components/settings/Contact"
 import {UserContext} from "./context/UserProvider"
-import Chat from "./components/home/Chat"
-// import Conversations from "./components/home/Conversations"
-import Messenger from "./components/home/Messenger"
-// import image from "./trivia-break.png"
 
 function App() {
   const {token, logout, members} = useContext(UserContext)
@@ -29,19 +25,13 @@ function App() {
           exact path="/"
           render={()=> token ? <Redirect to = "/home" /> : <Auth />}
         />
-        {/* <img src={image} alt="" /> */}
         <ProtectedRoute 
           exact path="/home"
           component={Home}
           redirectTo="/"
           token={token}
         />
-        {/* <ProtectedRoute 
-          path="/home/chat"
-          component={Chat}
-          redirectTo="/"
-          token={token}
-        /> */}
+     
         <ProtectedRoute 
           path="/settings"
           component={Settings}

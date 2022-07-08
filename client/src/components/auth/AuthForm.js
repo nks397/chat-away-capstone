@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React from "react"
 
 function AuthForm(props) {
     const {
@@ -11,13 +11,6 @@ function AuthForm(props) {
             password
         }
     } = props
-    // console.log(props, "props")
-
-    const [showPassword, setShowPassword] = useState(false)
-
-    function togglePassword() {
-        setShowPassword(prevToggle => !prevToggle)
-    }
 
     return(
         <form onSubmit={handleSubmit}>
@@ -29,18 +22,14 @@ function AuthForm(props) {
                 placeholder="Username"
             />
             <input 
-                // type="password"
-                type={showPassword ? "text" : "password"}
+                type="password"
                 value={password}
                 name="password"
                 onChange={handleChange}
                 placeholder="Password"
             />
-            {/* <i class="far fa-eye" id="togglePassword" onClick={togglePassword}></i> */}
-            
             <button>{btnText}</button>
             <p style={{color: "red"}}>{errMsg}</p>
-        {console.log(errMsg, "msg")}
         </form>
     )
 }

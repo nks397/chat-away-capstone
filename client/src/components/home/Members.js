@@ -1,7 +1,7 @@
 import React from "react"
 
-function Members({filteredMembers}) {
-  
+function Members(props) {
+  const {filteredMembers} = props
       return (
         <div> 
             {filteredMembers}

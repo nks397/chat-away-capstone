@@ -1,16 +1,8 @@
-import React, {useEffect} from "react"
-// import Members from "./Members"
-// import { Avatar } from "antd"
-// import { UserOutlined } from '@ant-design/icons'
+import React from "react"
 import 'antd/dist/antd.css'
 import SearchMembers from "./SearchMembers"
 
-function ContactSidebar(props) {
-    // const {getAllUsers} = props
-
-    // useEffect(() => {
-    //     getAllUsers()
-    // }, [])
+function ContactSidebar() {
 
     return(
         <div className="contact-sidebar-container">
